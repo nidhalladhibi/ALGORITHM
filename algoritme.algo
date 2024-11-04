@@ -1,0 +1,44 @@
+ALGORITHM compterPhrase
+VAR
+    longueur : INTEGER
+    nombreDeMots : INTEGER
+    nombreDeVoyelles : INTEGER
+    voyelles : STRING
+    phrase : STRING
+BEGIN
+    // Initialiser les compteurs
+    longueur := 0
+    nombreDeMots := 0
+    nombreDeVoyelles := 0
+    voyelles := "aeiouAEIOU" // Liste des voyelles
+
+    // Lire la phrase avec prompt
+    phrase := PROMPT("Entrez une phrase se terminant par un point :")
+
+    // Vérifier si la phrase se termine par un point
+    IF phrase.endsWith('.') THEN
+        phrase := phrase.slice(0, -1) // Supprimer le point
+    END IF
+
+    // Compter la longueur de la phrase
+    longueur := phrase.length // Longueur de la phrase
+
+    // Séparer la phrase en mots
+    mots := phrase.split(' ') // Séparer la phrase en mots
+    nombreDeMots := mots.length // Nombre de mots
+
+    // Compter les voyelles dans chaque mot
+    FOR chaque mot IN mots DO
+        FOR chaque caractère c IN mot DO
+            IF voyelles.includes(c) THEN
+                nombreDeVoyelles := nombreDeVoyelles + 1 // Incrémente le compteur de voyelles
+            END IF
+        END FOR
+    END FOR
+
+    // Afficher les résultats
+    PRINT("Longueur de la phrase :", longueur)
+    PRINT("Nombre de mots :", nombreDeMots)
+    PRINT("Nombre de voyelles :", nombreDeVoyelles)
+
+END ALGORITHM
